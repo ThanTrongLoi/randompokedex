@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main">
+    <div id="main__img" class="main__img pokedex">
+      <span></span>
+      <img id="img" src="" alt="">
+    </div>
+    <button onclick="getRandomPoke()" class="material-symbols-rounded">
+      autorenew
+    </button>
+    <div class="popup">
+      <div class="pokemon">
+        <div class="pokemon__info">
+          <div id="pokemon__img" class="pokemon__img pokedex">
+            <span></span>
+            <img id="img2" src="" alt="pokemon_name">
+          </div>
+          <h1 pokemon-name></h1>
+          <div class="pokemon__type"></div>
+          <div class="pokemon__size">
+            <p pokemon-weight></p>
+            <p pokemon-height></p>
+          </div>
+        </div>
+        <div class="pokemon__portal"></div>
+        <div class="pokemon__evo">
+          
+        </div>
+      </div>
+      <span id="close" class="material-symbols-rounded">
+        close
+      </span>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+</html>

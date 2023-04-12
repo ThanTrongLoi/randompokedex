@@ -1,0 +1,504 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --color-normal: #A8A77A;
+  --color-fire: #EE8130;
+  --color-water: #6390F0;
+  --color-electric: #F7D02C;
+  --color-grass: #7AC74C;
+  --color-ice: #96D9D6;
+  --color-fighting: #C22E28;
+  --color-poison: #A33EA1;
+  --color-ground: #E2BF65;
+  --color-flying: #A98FF3;
+  --color-psychic: #F95587;
+  --color-bug: #A6B91A;
+  --color-rock: #B6A136;
+  --color-ghost: #735797;
+  --color-dragon: #6F35FC;
+  --color-dark: #705746;
+  --color-steel: #B7B7CE;
+  --color-fairy: #D685AD;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* types color */
+.normal {
+  background-color: var(--color-normal);
+}
+
+.fire {
+  background-color: var(--color-fire);
+}
+
+.water {
+  background-color: var(--color-water);
+}
+
+.electric {
+  background-color: var(--color-electric);
+}
+
+.grass {
+  background-color: var(--color-grass);
+}
+
+.ice {
+  background-color: var(--color-ice);
+}
+
+.fighting {
+  background-color: var(--color-fighting);
+}
+
+.poison {
+  background-color: var(--color-poison);
+}
+
+.ground {
+  background-color: var(--color-ground);
+}
+
+.flying {
+  background-color: var(--color-flying);
+}
+
+.psychic {
+  background-color: var(--color-psychic);
+}
+
+.bug {
+  background-color: var(--color-bug);
+}
+
+.rock {
+  background-color: var(--color-rock);
+}
+
+.ghost {
+  background-color: var(--color-ghost);
+}
+
+.dragon {
+  background-color: var(--color-dragon);
+}
+
+.dark {
+  background-color: var(--color-dark);
+}
+
+.steel {
+  background-color: var(--color-steel);
+}
+
+.fairy {
+  background-color: var(--color-fairy);
+}
+
+.pokedex {
+  position: relative;
+  z-index: 99;
+}
+
+.pokedex::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: -2;
+  background-color: rgb(102, 102, 102);
+}
+
+.pokedex::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: rgb(49, 47, 47);
+}
+
+.pokedex>span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-10deg);
+  width: 100%;
+  height: 20px;
+  background-color: rgb(49, 47, 47);
+  z-index: -1;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 62.5%;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background-color: rgb(49, 47, 47);
+}
+
+.main__img {
+  width: 350px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.main__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 2;
+}
+
+.main>button {
+  background-color: transparent;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  background-color: silver;
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.main .popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, .7);
+  overflow: auto;
+  display: none;
+}
+
+.main .popup>span {
+  color: white;
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  cursor: pointer;
+}
+
+.pokemon {
+  display: grid;
+  background: rgb(49, 47, 47);
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 100px 0;
+}
+
+.pokemon__img {
+  width: 350px;
+  height: 350px;
+  overflow: hidden;
+}
+
+.pokemon__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.pokemon__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.pokemon__info>h1 {
+  color: white;
+  text-align: center;
+  font-size: 36px;
+  text-transform: capitalize;
+  /* margin: 20px 0; */
+}
+
+.pokemon__info .pokemon__type {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-right: 30px;
+}
+
+.pokemon__info .pokemon__type span {
+  color: white;
+  font-size: 20px;
+  width: 110px;
+  border-radius: 40px;
+  padding: 6px 0;
+  text-align: center;
+}
+
+.pokemon__info .pokemon__size {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pokemon__info .pokemon__size p {
+  color: white;
+  font-size: 22px;
+  margin-right: 30px;
+}
+
+.pokemon__portal {
+  display: grid;
+  gap: 10px;
+}
+
+.pokemon__portal .portal {
+  display: grid;
+}
+
+.pokemon__portal .portal .portal__name span {
+  height: 40px;
+
+}
+
+.pokemon__portal .portal .portal__name span,
+.pokemon__portal .portal .portal__number span {
+  background-color: white;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+}
+
+.pokemon__evo {
+  background-color: rgb(49, 47, 47);
+  padding: 50px;
+}
+.pokemon__evo--info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pokemon__evo--img {
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+}
+
+.pokemon__evo--img span {
+  width: 100%;
+  height: 10px;
+}
+
+.pokemon__evo--img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pokemon__evo--info p {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  text-transform: capitalize;
+}
+
+.pokemon__portal .portal .portal__progress {
+  position: relative;
+}
+
+.pokemon__portal .portal .portal__progress .bar {
+  background-color: #c70063;
+  position: absolute;
+  animation: portal 2s;
+}
+
+.pokemon__evo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.active {
+  background-color: red;
+}
+
+@media screen and (min-width: 1024px) {
+  .main__img {
+    width: 600px;
+    height: 600px;
+  }
+
+  .pokemon {
+    top: 60%;
+    width: 70%;
+    grid-template-columns: 2fr 3fr;
+  }
+
+  .pokemon__evo {
+    grid-row: 3;
+    grid-column: 1 / span 3;
+  }
+
+  .pokemon__portal {
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-end: auto;
+    gap: 20px;
+  }
+
+  .pokemon__portal .portal {
+    grid-template-rows: 80% 1fr;
+  }
+
+  .portal__number {
+    order: 1;
+    display: none;
+  }
+
+  .portal__progress {
+    order: 1;
+    height: 100%;
+    position: relative;
+  }
+
+  .bar::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    background-color: white;
+    width: 50px;
+    height: 30px;
+    border-radius: 4px;
+    text-align: center;
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    animation: text .6s ease-in-out;
+  }
+
+  .bar::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-top: 10px solid white;
+    z-index: 99;
+  }
+
+  @keyframes text {
+    0% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .portal__name {
+    order: 2;
+  }
+
+  .pokemon__portal .portal .portal__progress .bar {
+    width: 100%;
+    height: 0%;
+    bottom: 0;
+    transform-origin: bottom;
+  }
+
+  @keyframes portal {
+    0% {
+      height: 0%;
+    }
+
+    100% {
+      height: attr(data-value);
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+
+  .pokemon__info {
+    align-items: center;
+  }
+
+  .pokemon__img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .pokemon__portal {
+    padding: 10px;
+  }
+
+  .portal {
+    grid-template-columns: 1fr 80% 1fr;
+  }
+
+  .pokemon__portal .portal .portal__progress {
+    margin: 20px 10px;
+    border-radius: 30px;
+    background-color: rgba(197, 172, 194, 0.7);
+  }
+
+  .pokemon__portal .portal .portal__progress .bar {
+    width: 0%;
+    height: 100%;
+    border-radius: 30px;
+  }
+
+  @keyframes portal {
+    0% {
+      width: 0%;
+    }
+
+    100% {
+      width: attr(data-value);
+    }
+  }
+
+  .pokemon__portal .portal .portal__name span,
+  .pokemon__portal .portal .portal__number span {
+    height: 60px;
+    background-color: transparent;
+    color: white;
+  }
+}
