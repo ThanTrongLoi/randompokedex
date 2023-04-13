@@ -1,13 +1,15 @@
-const bug = 'icons/bug.svg'
+// import poke from './pokemon.json' assert {type : 'json'}
 
 async function getRandomPoke() {
-  const i = randomInt(1, 802)
+
   const url = `https://pokeapi.co/api/v2/pokemon/`
 
-  const data = (await getPokemon(i)).data
-  const data_evo = (await getPokemon(i)).data_evo
+  const i = randomInt(1, 802)
 
-  console.log(setEvoChainArr(data_evo))
+  const data = (await getPokemon(url, i)).data
+  const data_evo = (await getPokemon(url, i)).data_evo
+
+
   img.setAttribute('src', `${data.sprites.other.home.front_default}`)
   getPokemonDetails(data)
   getEvoPokemon(data_evo)
@@ -22,8 +24,15 @@ async function getRandomPoke() {
   }))
 }
 
-const getPokemon = async (eId) => {
-  const url = `https://pokeapi.co/api/v2/pokemon/`
+
+const getImgIndx = (urlStr) => {
+  let regex = /[^v]\d/;
+  let searchIdx = urlStr.search(regex)
+  let evoId = urlStr.slice(searchIdx + 1, -1)
+  return evoId
+}
+
+const getPokemon = async (url, eId) => {
   const response = await fetch(url + `${eId}`)
   const data = await response.json()
   const evo_url = await fetch(data.species.url)
@@ -44,7 +53,7 @@ const getPokemonDetails = (data) => {
   img2.setAttribute('src', `${data.sprites.other.home.front_default}`)
   name.innerText = data.name
   types.innerHTML = data.types.map((type) => {
-    return `<span class="${type.type.name}">${type.type.name}</span>`
+    return `<span class="${type.type.name}"><img class="types" src="${iconTypes(type.type.name)}"/>${type.type.name}</span>`
   }).join('')
   weight.innerText = "Weight: " + data.weight / 10 + " Kg"
   height.innerText = "Height: " + data.height / 10 + " m"
@@ -70,6 +79,48 @@ const getPokemonDetails = (data) => {
   })
 
 
+}
+
+
+const iconTypes = (type) => {
+  switch (type) {
+    case 'bug':
+      return 'icons/bug.svg';
+    case 'dark':
+      return 'icons/dark.svg';
+    case 'dragon':
+      return 'icons/dragon.svg';
+    case 'electric':
+      return 'icons/electric.svg';
+    case 'fairy':
+      return 'icons/fairy.svg';
+    case 'fighting':
+      return 'icons/fighting.svg';
+    case 'fire':
+      return 'icons/fire.svg';
+    case 'flying':
+      return 'icons/flying.svg';
+    case 'ghost':
+      return 'icons/ghost.svg';
+    case 'grass':
+      return 'icons/grass.svg';
+    case 'ground':
+      return 'icons/ground.svg';
+    case 'ice':
+      return 'icons/ice.svg';
+    case 'normal':
+      return 'icons/normal.svg';
+    case 'poison':
+      return 'icons/poison.svg';
+    case 'psychic':
+      return 'icons/psychic.svg';
+    case 'rock':
+      return 'icons/rock.svg';
+    case 'steel':
+      return 'icons/steel.svg';
+    case 'water':
+      return 'icons/water.svg';
+  }
 }
 
 const getEvoPokemon = (data_evo) => {
@@ -137,12 +188,6 @@ const getDataValue = (stat, statValue) => {
 getRandomPoke()
 
 
-const getImgIndx = (urlStr) => {
-  let regex = /[^v]\d/;
-  let searchIdx = urlStr.search(regex)
-  let evoId = urlStr.slice(searchIdx + 1, -1)
-  return evoId
-}
 
 
 const setEvoChainArr = (data) => {

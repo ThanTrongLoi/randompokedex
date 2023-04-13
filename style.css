@@ -208,7 +208,7 @@ body {
   background: rgb(49, 47, 47);
   position: absolute;
   width: 90%;
-  height: 90%;
+  height: 100% ;
   top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -258,6 +258,14 @@ body {
   border-radius: 40px;
   padding: 6px 0;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.pokemon__info .pokemon__type span img {
+  width: 20px;
+  height: 20px;
 }
 
 .pokemon__info .pokemon__size {
@@ -275,6 +283,7 @@ body {
 .pokemon__portal {
   display: grid;
   gap: 10px;
+  background-color: rgb(49, 47, 47);
 }
 
 .pokemon__portal .portal {
@@ -500,5 +509,17 @@ body {
     height: 60px;
     background-color: transparent;
     color: white;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .pokemon__info .pokemon__type {
+    margin-right: 0;
+  }
+  .portal {
+    grid-template-columns: 1fr 70% 1fr;
+  }
+  .pokemon__portal .portal .portal__name span {
+    width: 70px;
   }
 }
