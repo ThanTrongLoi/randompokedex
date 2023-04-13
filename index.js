@@ -9,8 +9,8 @@ async function getRandomPoke() {
   const data = (await getPokemon(url, i)).data
   const data_evo = (await getPokemon(url, i)).data_evo
 
-
   img.setAttribute('src', `${data.sprites.other.home.front_default}`)
+  document.title = data.name + ' Pokemon'
   getPokemonDetails(data)
   getEvoPokemon(data_evo)
 
@@ -21,6 +21,7 @@ async function getRandomPoke() {
     const data = await (await fetch(url + `${el.getAttribute('data-id')}`)).json()
     img.setAttribute('src', `${data.sprites.other.home.front_default}`)
     getPokemonDetails(data)
+    document.title = data.name + ' Pokemon'
   }))
 }
 
